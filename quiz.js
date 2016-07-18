@@ -60,9 +60,14 @@ function starterFunction(){
 
 //tree creation function
 function createTree(obj){
+  var spaces = Array(parseInt(obj.height)).join(" ");
+  var letters = obj.character;
 
 
+  for(var i = obj.height; i > 0; i--){
+    console.log(spaces, letters);
+    spaces = spaces.replace(" ","");
+  }
   console.log(obj);
-
 
 }
