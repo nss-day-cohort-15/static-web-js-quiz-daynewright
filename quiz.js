@@ -3,21 +3,29 @@ console.log('Results will display below.');
 
 var button = document.getElementById("button");
 // Assign a function to be executed when the button is clicked
-button.addEventListener("click", tree);
+button.addEventListener("click", starterFunction);
 
 function checkKey(e){
-  if(e.keyCode == 13) {tree();}
+  if(e.keyCode == 13) {starterFunction();}
 }
 
-//main function for calculation
-function tree(){
-  console.log('-------------------------------------');
-
+//get inputs and call tree function
+function starterFunction(){
 
   //get input data
   var height = document.getElementById('height').value;
   var char = document.getElementById('char').value;
 
+  //alert that fields need a value
+  if(height.length === 0) {
+    alert('Please input a height.\n(Default 10 has been used.)');
+  }
+
+  if(char.length === 0) {
+    alert('Please input a character.\n(Default * has been used.)');
+  }
+
+  console.log('-------------------------------------');
 
   //validate input data
   if(isNaN(parseInt(height))){
@@ -36,10 +44,25 @@ function tree(){
   console.log('height used: ', height);
   console.log('characted used: ', char);
 
-
   console.log('-------------------------------------');
 
+  var obj = {
+              'height': height,
+              'character': char
+            };
 
+  //call function to create the tree
+  createTree(obj);
 
   document.forms["form"].reset();
+}
+
+
+//tree creation function
+function createTree(obj){
+
+
+  console.log(obj);
+
+
 }
