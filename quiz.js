@@ -62,10 +62,14 @@ function starterFunction(){
 function createTree(obj){
   var spaces = Array(parseInt(obj.height)).join(" ");
   var letters = obj.character;
+  var double = letters + letters;
 
 
   for(var i = obj.height; i > 0; i--){
+
     console.log(spaces, letters);
+
+    letters += double;
     spaces = spaces.replace(" ","");
   }
   console.log(obj);
