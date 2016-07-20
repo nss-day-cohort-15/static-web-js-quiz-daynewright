@@ -2,8 +2,12 @@
 console.log('Results will display below.');
 
 var button = document.getElementById("button");
+var height = document.getElementById('height');
+  var char = document.getElementById('char');
 // Assign a function to be executed when the button is clicked
 button.addEventListener("click", starterFunction);
+height.addEventListener("keydown", checkKey);
+char.addEventListener("keydown", checkKey);
 
 function checkKey(e){
   if(e.keyCode == 13) {starterFunction();}
@@ -13,48 +17,49 @@ function checkKey(e){
 function starterFunction(){
 
   //get input data
-  var height = document.getElementById('height').value;
-  var char = document.getElementById('char').value;
+  heightVal = height.value;
+  charVal = char.value;
 
   //alert that fields need a value
-  if(height.length === 0) {
+  if(heightVal.length === 0) {
     alert('Please input a height.\n(Default 10 has been used.)');
   }
 
-  if(char.length === 0) {
+  if(charVal.length === 0) {
     alert('Please input a character.\n(Default * has been used.)');
   }
 
   console.log('-------------------------------------');
 
   //validate input data
-  if(isNaN(parseInt(height))){
+  if(isNaN(parseInt(heightVal))){
     console.warn('Height 10 was used as default because no number was provided.');
-    height = 10;
+    heightVal = 10;
   }
 
-  if(char.length > 1){
+  if(charVal.length > 1){
     console.warn('Only one character is allowed and first one submitted was used.');
-    char = char.toString().charAt(0);
+    charVal = charVal.toString().charAt(0);
   }else if(char.length === 0){
     console.warn('Default * character was used.');
-    char = '*';
+    charVal = '*';
   }
 
-  console.log('height used: ', height);
-  console.log('characted used: ', char);
+  console.log('height used: ', heightVal);
+  console.log('characted used: ', charVal);
 
   console.log('-------------------------------------');
 
   var obj = {
-              'height': height,
-              'character': char
+              'height': heightVal,
+              'character': charVal
             };
 
   //call function to create the tree
   createTree(obj);
 
-  document.forms["form"].reset();
+  document.getElementById('height').value = "";
+  document.getElementById('char').value = "";
 }
 
 
